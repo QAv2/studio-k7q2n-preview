@@ -535,10 +535,52 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
+/* ---------- Splash ---------- */
+
+function showSplash() {
+  const splash = document.getElementById('splash');
+  splash.classList.remove('dismissed');
+  splash.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+function dismissSplash() {
+  const splash = document.getElementById('splash');
+  splash.classList.remove('visible');
+  splash.classList.add('dismissed');
+  localStorage.setItem('splash_seen', '1');
+  document.body.style.overflow = '';
+}
+
+function initSplash() {
+  const splash = document.getElementById('splash');
+  const params = new URLSearchParams(window.location.search);
+  const forceShow = params.has('intro') || window.location.hash === '#intro';
+  const seen = localStorage.getItem('splash_seen');
+
+  if (forceShow || !seen) {
+    showSplash();
+  } else {
+    splash.classList.remove('visible');
+    splash.classList.add('dismissed');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('splashCta').addEventListener('click', dismissSplash);
+  document.getElementById('splashClose').addEventListener('click', dismissSplash);
+  splash.addEventListener('click', (e) => {
+    if (e.target === splash) dismissSplash();
+  });
+
+  const reopenBtn = document.getElementById('reopenIntro');
+  if (reopenBtn) reopenBtn.addEventListener('click', showSplash);
+}
+
 /* ---------- Wire up ---------- */
 
 function init() {
   setTheme(state.theme);
+  initSplash();
 
   document.getElementById('propertyName').value = state.property;
   document.getElementById('inspectorName').value = state.inspector;
@@ -614,7 +656,13 @@ function init() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeEditModal();
+    if (e.key !== 'Escape') return;
+    const splash = document.getElementById('splash');
+    if (splash.classList.contains('visible')) {
+      dismissSplash();
+    } else {
+      closeEditModal();
+    }
   });
 }
 

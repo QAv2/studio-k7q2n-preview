@@ -6,8 +6,47 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Preview Build</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'blue');
+  </script>
 </head>
 <body>
+
+  <!-- Splash / intro overlay -->
+  <div class="splash visible" id="splash" role="dialog" aria-modal="true" aria-labelledby="splashTitle">
+    <div class="splash-card">
+      <button class="splash-close" id="splashClose" aria-label="Close intro">&times;</button>
+      <div class="splash-eyebrow">A rough design sketch</div>
+      <h2 class="splash-title" id="splashTitle">Built for the person on the ground.</h2>
+
+      <div class="splash-body">
+        <p>If you're the one running inspections, you already know every unit, catch what's wrong, and make the call. <strong>The hard part is the part only you can do.</strong></p>
+        <p>The part that wastes your time is the <em>re-keying</em> &mdash; writing notes in your phone, printing them, then typing the same thing again into a work-order form. <em>That's what this is about.</em></p>
+      </div>
+
+      <div class="splash-flow">
+        <span>your notes</span>
+        <span class="arrow">&rarr;</span>
+        <span>auto-extracted</span>
+        <span class="arrow">&rarr;</span>
+        <span>you confirm</span>
+        <span class="arrow">&rarr;</span>
+        <span>ready to print</span>
+      </div>
+
+      <p class="splash-lead">Your notes &rarr; work orders. The retyping goes away.</p>
+
+      <div class="splash-body">
+        <p>Not a product &mdash; a sketch you can poke at. Try the samples, load your own notes, change the colors, print a batch. Tell me what's missing, what you'd actually use, what you'd never touch, what would save you real hours.</p>
+        <p class="splash-fine">Runs entirely in your browser. Nothing is saved, sent, or uploaded anywhere.</p>
+      </div>
+
+      <button class="splash-cta" id="splashCta">Let me try it</button>
+
+      <div class="splash-sig">A design study &middot; by someone who builds things on the side</div>
+    </div>
+  </div>
+
 
   <header class="site-header">
     <div class="eyebrow">Preview &middot; Design Study</div>
@@ -59,6 +98,7 @@
       <div class="sidebar-section">
         <span class="sidebar-label">About this preview</span>
         <div class="help-text">Everything below updates live. Edit the notes, tap any extracted order to refine it, then see the PDF on the right. This is the whole flow.</div>
+        <button class="sample-btn" id="reopenIntro" style="margin-top: 10px;">Re-read the intro <span class="count">&rarr;</span></button>
       </div>
 
     </aside>
