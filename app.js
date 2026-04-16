@@ -548,7 +548,7 @@ function dismissSplash() {
   const splash = document.getElementById('splash');
   splash.classList.remove('visible');
   splash.classList.add('dismissed');
-  localStorage.setItem('splash_seen', '1');
+  localStorage.setItem('splash_seen_v2', '1');
   document.body.style.overflow = '';
 }
 
@@ -556,7 +556,7 @@ function initSplash() {
   const splash = document.getElementById('splash');
   const params = new URLSearchParams(window.location.search);
   const forceShow = params.has('intro') || window.location.hash === '#intro';
-  const seen = localStorage.getItem('splash_seen');
+  const seen = localStorage.getItem('splash_seen_v2');
 
   if (forceShow || !seen) {
     showSplash();

@@ -1105,13 +1105,85 @@ input, textarea { font-family: inherit; color: inherit; }
   transform: translateY(0);
 }
 
-.splash-sig {
+.splash-section {
+  margin: 24px 0;
+}
+
+.splash-section-label {
   font-size: 11px;
-  color: var(--text-faint);
-  text-align: center;
-  margin-top: 22px;
-  letter-spacing: 0.5px;
-  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.splash-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.splash-list li {
+  position: relative;
+  padding: 8px 0 8px 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-soft);
+}
+.splash-list li:last-child { border-bottom: none; }
+
+.splash-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.splash-list-num {
+  counter-reset: splash-step;
+}
+.splash-list-num li {
+  counter-increment: splash-step;
+  padding-left: 32px;
+}
+.splash-list-num li::before {
+  content: counter(splash-step);
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-callout {
+  margin: 28px 0 8px;
+  padding: 18px 20px;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text);
+}
+.splash-callout strong {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: var(--text);
 }
 
 @media (max-width: 520px) {
@@ -1124,6 +1196,8 @@ input, textarea { font-family: inherit; color: inherit; }
   }
   .splash-lead { font-size: 16px; }
   .splash-body p { font-size: 14px; }
+  .splash-list li { font-size: 13px; }
+  .splash-callout { font-size: 13px; padding: 14px 16px; }
 }
 
 /* ---------- Print ---------- */
