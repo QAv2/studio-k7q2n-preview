@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Preview Build</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="eyebrow">Preview &middot; Design Study</div>
+    <h1>Notes <span class="accent">&rarr;</span> Work Orders</h1>
+    <p class="tag">A walkthrough of the tool idea. <strong>Try it live below.</strong> Change the colors, edit the notes, see what the app does with them. Nothing is saved or sent anywhere &mdash; it all runs in your browser.</p>
+  </header>
+
+  <div class="main">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section">
+        <span class="sidebar-label">Pick a color</span>
+        <div class="theme-grid">
+          <div class="theme-swatch swatch-blue active" data-theme="blue" title="Classic"></div>
+          <div class="theme-swatch swatch-green" data-theme="green" title="Forest"></div>
+          <div class="theme-swatch swatch-sepia" data-theme="sepia" title="Paper"></div>
+          <div class="theme-swatch swatch-midnight" data-theme="midnight" title="Midnight"></div>
+          <div class="theme-swatch swatch-cyber" data-theme="cyber" title="Cyber"></div>
+        </div>
+        <div class="theme-name" id="themeName">Classic</div>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-label">Personalize</span>
+        <div class="input-group">
+          <label for="propertyName">Property</label>
+          <input type="text" id="propertyName" value="Oak Ridge Apartments" maxlength="40">
+        </div>
+        <div class="input-group">
+          <label for="inspectorName">Inspector</label>
+          <input type="text" id="inspectorName" value="J. Smith" maxlength="30">
+        </div>
+        <div class="input-group">
+          <label for="companyName">Company</label>
+          <input type="text" id="companyName" value="Your Management Co." maxlength="40">
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-label">Try sample notes</span>
+        <button class="sample-btn" data-sample="small">Quick inspection <span class="count">6 units</span></button>
+        <button class="sample-btn" data-sample="large">Full property <span class="count">14 units</span></button>
+        <button class="sample-btn" data-sample="messy">Messy &amp; mixed <span class="count">8 units</span></button>
+        <button class="sample-btn" data-sample="clear">Clear notes <span class="count">&times;</span></button>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-label">About this preview</span>
+        <div class="help-text">Everything below updates live. Edit the notes, tap any extracted order to refine it, then see the PDF on the right. This is the whole flow.</div>
+      </div>
+
+    </aside>
+
+    <!-- Screens -->
+    <main class="screens">
+
+      <!-- Screen 1 -->
+      <div class="screen-wrap">
+        <div class="step-num">1</div>
+        <h2 class="screen-title">Hand it your notes</h2>
+        <p class="screen-caption">Write the way you already do. The tool reads your voice, not a template.</p>
+        <div class="phone" id="phone1">
+          <div class="notch"></div>
+          <div class="status-bar"><span>9:41</span><span class="status-right"><span class="bars"></span></span></div>
+          <div class="app-bar">
+            <div class="app-title">New Inspection</div>
+            <div class="app-subtitle" id="appSub1">Oak Ridge Apartments &middot; April 15</div>
+          </div>
+          <div class="content">
+            <div class="import-hint">
+              <span class="dot"></span>
+              <span id="importHint">Imported from Notes &middot; 6 units</span>
+            </div>
+            <textarea class="notes-input" id="notesInput" spellcheck="false" placeholder="Paste or type your inspection notes here..."></textarea>
+            <button class="btn-primary" id="parseBtn">Read My Notes</button>
+            <button class="btn-secondary" id="clearBtn">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="screen-wrap">
+        <div class="step-num">2</div>
+        <h2 class="screen-title">Confirm before commit</h2>
+        <p class="screen-caption">See what the tool read. Tap anything to edit. You sign off on each one.</p>
+        <div class="phone" id="phone2">
+          <div class="notch"></div>
+          <div class="status-bar"><span>9:43</span><span class="status-right"><span class="bars"></span></span></div>
+          <div class="app-bar">
+            <div class="app-title">Review</div>
+            <div class="app-subtitle" id="appSub2">No notes parsed yet</div>
+          </div>
+          <div class="content" id="reviewContent">
+            <div class="empty-state">
+              Notes haven't been read yet.
+              <div class="hint">Tap "Read My Notes" on the left.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3 -->
+      <div class="screen-wrap">
+        <div class="step-num">3</div>
+        <h2 class="screen-title">Print, email, or save</h2>
+        <p class="screen-caption">The paper trail you already make &mdash; without the retyping.</p>
+        <div class="phone" id="phone3">
+          <div class="notch"></div>
+          <div class="status-bar"><span>9:45</span><span class="status-right"><span class="bars"></span></span></div>
+          <div class="app-bar">
+            <div class="app-title" id="pdfTitle">No PDFs yet</div>
+            <div class="app-subtitle" id="appSub3">Confirm orders in step 2 first</div>
+          </div>
+          <div class="content" id="pdfContent">
+            <div class="empty-state">
+              Nothing to print yet.
+              <div class="hint">Complete step 2 to generate PDFs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Callouts -->
+  <section class="callouts">
+    <div class="callouts-inner">
+      <div class="callout-header">What this is designed around</div>
+      <div class="callout-grid">
+        <div class="callout">
+          <strong>Your notes stay your notes.</strong>
+          No template to fight with, no required fields. The tool adapts to your writing, not the other way around.
+        </div>
+        <div class="callout">
+          <strong>You see the parse before the paper.</strong>
+          Nothing prints until you've signed off on each order. The tool reads and suggests &mdash; you decide.
+        </div>
+        <div class="callout">
+          <strong>Output matches your current paper trail.</strong>
+          Same form, same format, same routing. Only the re-keying goes away.
+        </div>
+        <div class="callout">
+          <strong>Non-work-order items get routed.</strong>
+          Complaints and lease notes don't become work orders &mdash; they're flagged separately, so nothing falls through.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    Preview build &middot; design study &middot; nothing committed
+  </footer>
+
+  <!-- Edit modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modalBody">
+      <h3>Edit work order</h3>
+      <div class="modal-sub" id="modalSub">Unit 000</div>
+      <div class="modal-field">
+        <label for="editIssue">Issue</label>
+        <textarea id="editIssue"></textarea>
+      </div>
+      <div class="modal-field">
+        <label for="editCategory">Category</label>
+        <select id="editCategory">
+          <option>Plumbing</option>
+          <option>Electrical</option>
+          <option>Safety</option>
+          <option>HVAC</option>
+          <option>Interior</option>
+          <option>Exterior</option>
+          <option>Appliance</option>
+          <option>Cleaning</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label for="editPriority">Priority</label>
+        <select id="editPriority">
+          <option>Routine</option>
+          <option>Priority</option>
+          <option>Urgent</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label for="editType">Route as</label>
+        <select id="editType">
+          <option value="work_order">Work Order</option>
+          <option value="comms">Tenant Communication</option>
+          <option value="note">Note only</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="cancel-btn" id="cancelEdit">Cancel</button>
+        <button class="delete-btn" id="deleteEdit">Delete</button>
+        <button class="save-btn" id="saveEdit">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Print output (hidden until print) -->
+  <div class="print-root" id="printRoot"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
