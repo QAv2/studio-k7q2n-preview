@@ -235,17 +235,17 @@ function renderPhone2() {
       .map((item, idx) => {
         const typeLabel = item.type === 'comms' ? 'Comms' : item.type === 'note' ? 'Note' : item.category;
         return `
-          <div class="wo-issue" data-unit="${u.unit}" data-item="${idx}">${escapeHtml(item.text)}</div>
-          <div class="wo-meta" data-unit="${u.unit}" data-item="${idx}">
+          <div class="wo-issue" data-unit="${escapeHtml(u.unit)}" data-item="${idx}">${escapeHtml(item.text)}</div>
+          <div class="wo-meta" data-unit="${escapeHtml(u.unit)}" data-item="${idx}">
             <span>${typeLabel}</span><span>${item.priority}</span>
           </div>`;
       })
       .join('');
 
     parts.push(`
-      <div class="work-order ${statusClass}" data-unit="${u.unit}">
+      <div class="work-order ${statusClass}" data-unit="${escapeHtml(u.unit)}">
         <div class="wo-header">
-          <div class="wo-unit">${u.unit}</div>
+          <div class="wo-unit">${escapeHtml(u.unit)}</div>
           <div class="wo-status">${statusText}</div>
         </div>
         ${itemsHtml}
@@ -254,7 +254,7 @@ function renderPhone2() {
   }
 
   if (cleanUnits.length) {
-    const names = cleanUnits.map((u) => u.unit).join(' · ');
+    const names = escapeHtml(cleanUnits.map((u) => u.unit).join(' · '));
     parts.push(`
       <div class="work-order wo-clean">
         <div class="wo-header">
@@ -315,7 +315,7 @@ function renderPhone3() {
     <div class="pdf-card">
       <div class="pdf-preview">
         <div class="pdf-title">WORK ORDER #2041</div>
-        <div class="pdf-row"><span>Unit</span><span>${first.unit}</span></div>
+        <div class="pdf-row"><span>Unit</span><span>${escapeHtml(first.unit)}</span></div>
         <div class="pdf-row"><span>Date</span><span>${today}</span></div>
         <div class="pdf-row"><span>Category</span><span>${first.category}</span></div>
         <div class="pdf-row"><span>Priority</span><span>${first.priority}</span></div>
@@ -431,7 +431,7 @@ function printAll(workOrders) {
         <div class="wo-num">#${2040 + idx + 1}</div>
       </header>
       <table>
-        <tr><th>Unit</th><td>${wo.unit}</td><th>Date</th><td>${today}</td></tr>
+        <tr><th>Unit</th><td>${escapeHtml(wo.unit)}</td><th>Date</th><td>${today}</td></tr>
         <tr><th>Property</th><td colspan="3">${escapeHtml(state.property)}</td></tr>
         <tr><th>Category</th><td>${wo.category}</td><th>Priority</th><td>${wo.priority}</td></tr>
         <tr><th>Inspector</th><td colspan="3">${escapeHtml(state.inspector)}</td></tr>
